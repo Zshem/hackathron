@@ -1,15 +1,39 @@
 package com.example.faelapp;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
+import com.example.faelapp.adapters.TabsAdapter;
+import com.example.faelapp.fragments.BaseFragment;
 
-public class MainActivity extends Activity {
+import android.app.ActionBar;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.widget.TabHost;
+
+public class MainActivity extends FragmentActivity {
+	
+	TabHost mTabHost;
+	ViewPager mViewPager;
+	TabsAdapter mTabsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_tabs_pager);
+        
+		mViewPager = (ViewPager) findViewById(R.id.pager);
+
+		ActionBar bar = getActionBar();
+		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+		mTabsAdapter = new TabsAdapter(this, mViewPager);
+
+		mTabsAdapter.addTab(bar.newTab().setText("Cards"),
+				BaseFragment.class, null);
+		mTabsAdapter.addTab(bar.newTab().setText("Coupons"),
+				BaseFragment.class, null);
+		mTabsAdapter.addTab(bar.newTab().setText("Transactions"),
+				BaseFragment.class, null);
     }
 
 
