@@ -9,6 +9,7 @@ import android.widget.TabHost;
 
 import com.example.faelapp.adapters.TabsAdapter;
 import com.example.faelapp.fragments.BaseFragment;
+import com.example.faelapp.fragments.CreditCardFragment;
 
 public class MainActivity extends FragmentActivity {
 
@@ -29,7 +30,7 @@ public class MainActivity extends FragmentActivity {
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
 
 		mTabsAdapter.addTab(bar.newTab().setText("Cards"),
-				BaseFragment.class, null);
+				CreditCardFragment.class, null);
 		mTabsAdapter.addTab(bar.newTab().setText("Coupons"),
 				BaseFragment.class, null);
 		mTabsAdapter.addTab(bar.newTab().setText("Transactions"),
