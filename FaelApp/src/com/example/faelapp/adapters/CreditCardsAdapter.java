@@ -1,5 +1,7 @@
 package com.example.faelapp.adapters;
 
+import java.util.List;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
@@ -14,11 +16,11 @@ import com.example.faelapp.model.CreditCard;
 
 public class CreditCardsAdapter extends BaseAdapter  {
 
-	private final CreditCard[] creditCards;
+	private final List<CreditCard> creditCards;
 	private final Context context;
 	private final Bitmap image;
 
-	public CreditCardsAdapter(Context context, CreditCard[] creditCards)
+	public CreditCardsAdapter(Context context, List<CreditCard> creditCards)
 	{
 		this.creditCards = creditCards;
 		this.context = context;
@@ -27,12 +29,12 @@ public class CreditCardsAdapter extends BaseAdapter  {
 
 	@Override
 	public int getCount() {
-		return 3;
+		return creditCards.size();
 	}
 
 	@Override
 	public Object getItem(int index) {
-		return creditCards[index];
+		return creditCards.get(index);
 	}
 
 	@Override

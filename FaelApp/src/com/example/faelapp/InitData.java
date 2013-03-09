@@ -2,6 +2,8 @@ package com.example.faelapp;
 
 
 
+import java.util.ArrayList;
+
 import android.app.Application;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,8 +12,8 @@ import com.example.faelapp.model.CreditCard;
 
 public class InitData extends Application {
 
-	public static CreditCard creditCards[];
-	public static Bitmap images[];
+	public static ArrayList<CreditCard> creditCards;
+	public static ArrayList<Bitmap> images;
 
 	private static InitData singleton;
 
@@ -29,17 +31,15 @@ public class InitData extends Application {
 	}
 
 	private void setupImages() {
-		images = new Bitmap[1];
-		images[0] = BitmapFactory.decodeResource(getResources(), R.drawable.card_plus);
+		images = new ArrayList<Bitmap>();
+		images.add(BitmapFactory.decodeResource(getResources(), R.drawable.card_plus));
 
 	}
 
 	private void setupCreditCards () {
-		creditCards = new CreditCard[3];
-		creditCards[0] = new CreditCard(3698, CreditCard.CardType.MASTER, "Fili Udzak", 150, 569);
-		creditCards[1] = new CreditCard(7918, CreditCard.CardType.DINERS, "Lolo M.", -2, 824);
-		creditCards[2] = new CreditCard(1697, CreditCard.CardType.VISA, "Maras Pi", 789542, 350);
-
-
+		creditCards = new ArrayList<CreditCard>();
+		creditCards.add(new CreditCard(3698, CreditCard.CardType.MASTER, "Fili Udzak", 150, 569));
+		creditCards.add(new CreditCard(7918, CreditCard.CardType.DINERS, "Lolo M.", -2, 824));
+		creditCards.add(new CreditCard(1697, CreditCard.CardType.VISA, "Maras Pi", 789542, 350));
 	}
 }
