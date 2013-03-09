@@ -19,12 +19,18 @@ import android.widget.Spinner;
 public class CouponsFragment extends Fragment {
 	
 	private String[] mSpinnerItems = {"Konzum", "Billa"};
+	
+	private int[] cardsAvailable = new int[] { R.drawable.spar_10, R.drawable.billa_10,
+			R.drawable.billa_20 };
     
     public static final String TAG = "detailsFragment";
     
-	CouponsPagerAdapter mAdapter;
-    CustomViewPager mPager;
-    PageIndicator mIndicator;
+	CouponsPagerAdapter mAdapterAvailable;
+	CouponsPagerAdapter mAdapterOwned;
+    CustomViewPager mPagerAvailable;
+    CustomViewPager mPagerOwned;
+    PageIndicator mIndicatorAvailable;
+    PageIndicator mIndicatorOwned;
 	
 	@Override
 	  public void onActivityCreated(Bundle savedInstanceState) {
@@ -45,18 +51,20 @@ public class CouponsFragment extends Fragment {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		spinner.setAdapter(adapter);
+		
+		//Available cards viewpager
+		mAdapterAvailable = new CouponsPagerAdapter(getActivity()
+                .getSupportFragmentManager(),
+                cardsAvailable);
 
-        mAdapter = new CouponsPagerAdapter(getActivity()
-                .getSupportFragmentManager());
+		mPagerAvailable = (CustomViewPager) linearLayout.findViewById(R.id.couponsAvailableViewPager);
+		mPagerAvailable.setAdapter(mAdapterAvailable);
 
-        mPager = (CustomViewPager) linearLayout.findViewById(R.id.couponsAvailableViewPager);
-        mPager.setAdapter(mAdapter);
+		mIndicatorAvailable = (CirclePageIndicator) linearLayout.findViewById(R.id.couponsAvailableIndicator);
+		mIndicatorAvailable.setViewPager(mPagerAvailable);
+        ((CirclePageIndicator) mIndicatorAvailable).setSnap(true);
 
-        mIndicator = (CirclePageIndicator) linearLayout.findViewById(R.id.couponsAvailableIndicator);
-        mIndicator.setViewPager(mPager);
-        ((CirclePageIndicator) mIndicator).setSnap(true);
-
-        mIndicator
+        mIndicatorAvailable
                 .setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                     @Override
                     public void onPageSelected(int position) {
@@ -71,6 +79,35 @@ public class CouponsFragment extends Fragment {
                     public void onPageScrollStateChanged(int state) {
                     }
                 });
+        
+        //Owned cards viewpager
+        mAdapterOwned = new CouponsPagerAdapter(getActivity()
+                .getSupportFragmentManager(),
+                cardsAvailable);
+
+        mPagerOwned = (CustomViewPager) linearLayout.findViewById(R.id.couponsOwnedViewPager);
+        mPagerOwned.setAdapter(mAdapterOwned);
+
+        mIndicatorOwned = (CirclePageIndicator) linearLayout.findViewById(R.id.couponsOwnedIndicator);
+        mIndicatorOwned.setViewPager(mPagerOwned);
+        ((CirclePageIndicator) mIndicatorOwned).setSnap(true);
+
+        mIndicatorOwned
+                .setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                    @Override
+                    public void onPageSelected(int position) {
+                    }
+
+                    @Override
+                    public void onPageScrolled(int position,
+                            float positionOffset, int positionOffsetPixels) {
+                    }
+
+                    @Override
+                    public void onPageScrollStateChanged(int state) {
+                    }
+                });
+        
         return linearLayout;
     }
 }

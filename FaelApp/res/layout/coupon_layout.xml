@@ -19,6 +19,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <TextView
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingLeft="5dip"
+        android:paddingTop="2dip"
+        android:text="@string/coupons_available" />
+
     <com.example.faelapp.CustomViewPager
         android:id="@+id/couponsAvailableViewPager"
         android:layout_width="match_parent"
@@ -31,10 +40,25 @@
         android:layout_height="wrap_content"
         android:padding="10dip" />
 
-    <android.support.v4.view.ViewPager
+    <TextView
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingLeft="5dip"
+        android:paddingTop="2dip"
+        android:text="@string/coupons_owned"/>
+
+    <com.example.faelapp.CustomViewPager
         android:id="@+id/couponsOwnedViewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+    
+    <com.viewpagerindicator.CirclePageIndicator
+        android:id="@+id/couponsOwnedIndicator"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip" />
 
 </LinearLayout>

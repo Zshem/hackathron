@@ -16,11 +16,12 @@ import android.widget.LinearLayout;
 public final class PlaceSlideFragment extends Fragment {
     int imageResourceId;
     
+    public PlaceSlideFragment(){}
+    
     public PlaceSlideFragment(int i) {
         imageResourceId = i;
     }
     
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,6 @@ public final class PlaceSlideFragment extends Fragment {
 
         LinearLayout layout = new LinearLayout(getActivity());
         layout.setLayoutParams(new LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,LinearLayout.LayoutParams.FILL_PARENT));
-        layout.setBackgroundColor(Color.BLACK);
 
         layout.setGravity(Gravity.CENTER);
         layout.addView(image);
