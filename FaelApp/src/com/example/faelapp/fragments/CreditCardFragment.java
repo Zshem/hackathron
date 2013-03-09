@@ -6,12 +6,13 @@ import com.example.faelapp.adapters.CreditCardsAdapter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.ListFragment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
 
-public class CreditCardFragment extends Fragment {
+public class CreditCardFragment extends ListFragment {
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
@@ -39,9 +40,6 @@ public class CreditCardFragment extends Fragment {
 	public void onPrepareOptionsMenu(Menu menu) {
 		
 		menu.clear();
-		menu.add("Refresh").setIcon(R.drawable.actionbar_refresh).setShowAsAction(
-				MenuItem.SHOW_AS_ACTION_IF_ROOM
-						| MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 		super.onPrepareOptionsMenu(menu);
 	}
 }
