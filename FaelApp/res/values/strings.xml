@@ -4,5 +4,6 @@
     <string name="app_name">FaelApp</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="coupons_pointbalance">300/500 points</string>
 
 </resources>

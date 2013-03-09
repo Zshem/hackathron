@@ -1,5 +1,9 @@
 package com.example.faelapp;
 
+import com.example.faelapp.adapters.TabsAdapter;
+import com.example.faelapp.fragments.BaseFragment;
+import com.example.faelapp.fragments.CouponsFragment;
+
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -31,7 +35,7 @@ public class MainActivity extends FragmentActivity {
 		mTabsAdapter.addTab(bar.newTab().setText("Cards"),
 				BaseFragment.class, null);
 		mTabsAdapter.addTab(bar.newTab().setText("Coupons"),
-				BaseFragment.class, null);
+				CouponsFragment.class, null);
 		mTabsAdapter.addTab(bar.newTab().setText("Transactions"),
 				BaseFragment.class, null);
     }

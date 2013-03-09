@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#333333"
+        android:gravity="right|center"
+        android:paddingRight="10dp"
+        android:text="@string/coupons_pointbalance"
+        android:textColor="#ffffff"
+        android:textSize="24sp" />
+
+    <Spinner
+        android:id="@+id/couponsSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.example.faelapp.CustomViewPager
+        android:id="@+id/couponsAvailableViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.viewpagerindicator.CirclePageIndicator
+        android:id="@+id/couponsAvailableIndicator"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/couponsOwnedViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>
