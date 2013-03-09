@@ -43,9 +43,9 @@ public class CreditCardsAdapter extends BaseAdapter  {
 	@Override
 	public View getView(int index, View convertView, ViewGroup parent) {
 
-		int type = getItemViewType(index);
-
 		View row = convertView;
+
+		int type = getItemViewType(index);
 
 		OnePictureViewHolder onePicHolder;
 
@@ -58,8 +58,6 @@ public class CreditCardsAdapter extends BaseAdapter  {
 		} else {
 			onePicHolder = (OnePictureViewHolder) row.getTag();
 		}
-
-
 
 		return row;
 	}
