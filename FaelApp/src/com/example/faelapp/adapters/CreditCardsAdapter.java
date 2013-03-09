@@ -1,7 +1,6 @@
 package com.example.faelapp.adapters;
 
 import com.example.faelapp.model.CreditCard;
-import com.filippudak.fiestatime.model.Film;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -16,11 +15,11 @@ public class CreditCardsAdapter extends BaseAdapter  {
 	private Bitmap[] images;
 	private int elementPosition;
 	
-	public CreditCardsAdapter(Context context, CreditCard[] creditCards, Bitmap[] images)
+	public CreditCardsAdapter(Context context, CreditCard[] creditCards)
 	{
 		this.creditCards = creditCards;
 		this.context = context;
-		this.images = images;
+		//this.images = images;
 	}
 	
 	@Override
