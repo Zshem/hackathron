@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 
 public class CustomViewPager extends ViewPager {
 
@@ -25,12 +26,20 @@ public class CustomViewPager extends ViewPager {
     }
 
 	@Override
-	public boolean onTouchEvent(MotionEvent arg0) {
-		
-		requestDisallowInterceptTouchEvent(true);
-		// TODO Auto-generated method stub
-		return super.onTouchEvent(arg0);
+	public boolean onTouchEvent(MotionEvent event) {
+		 switch (event.getAction()) {
+		    case MotionEvent.ACTION_MOVE: 
+		        requestDisallowInterceptTouchEvent(true);
+		        break;
+		    case MotionEvent.ACTION_UP:
+		    case MotionEvent.ACTION_DOWN:
+		    	break;
+		    case MotionEvent.ACTION_CANCEL:
+		        requestDisallowInterceptTouchEvent(false);
+		        break;
+		    }
+		return super.onTouchEvent(event);
 	}
-    
-    
+
+
 }

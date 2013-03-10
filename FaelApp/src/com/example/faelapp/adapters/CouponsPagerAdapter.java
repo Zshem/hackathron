@@ -1,5 +1,8 @@
 package com.example.faelapp.adapters;
 
+import java.util.ArrayList;
+
+import com.example.faelapp.model.Coupon;
 import com.viewpagerindicator.IconPagerAdapter;
 
 import android.support.v4.app.Fragment;
@@ -9,21 +12,29 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 public class CouponsPagerAdapter extends FragmentStatePagerAdapter implements
 		IconPagerAdapter {
 
-	private int[] mImages;
+	private ArrayList<Coupon> mCoupons;
 
-	public CouponsPagerAdapter(FragmentManager fm, int[] images) {
+	public CouponsPagerAdapter(FragmentManager fm, ArrayList<Coupon> coupons) {
 		super(fm);
-		mImages = images;
+		mCoupons = coupons;
 	}
+
+	
+	@Override
+	public int getItemPosition(Object object) {
+		return POSITION_NONE;
+	}
+
+
 
 	@Override
 	public Fragment getItem(int position) {
-		return new PlaceSlideFragment(mImages[position]);
+		return new PlaceSlideFragment(mCoupons.get(position));
 	}
 
 	@Override
 	public int getCount() {
-		return mImages.length;
+		return mCoupons.size();
 	}
 
 	@Override
