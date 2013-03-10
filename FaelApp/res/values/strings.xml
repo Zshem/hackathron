@@ -12,5 +12,6 @@
     <string name="coupons_pointbalance">300/500 points</string>
     <string name="coupons_available">AVAILABLE</string>
     <string name="coupons_owned">MY COUPONS</string>
-
+	<string name="cancel_payment">Cancel payment</string>
+	<string name="payment_cancel_clicked">Payment canceled</string>
 </resources>
