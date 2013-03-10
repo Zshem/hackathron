@@ -4,16 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <Button android:id="@+id/button_pay"
+    <ImageView android:id="@+id/button_pay"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:text="TEXT"
-        
+        android:src="@drawable/pay"
+        android:scaleType="centerInside"
         />
-    
-    <TextView android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:text="DADADSADASDASDASDASDASDASDAS"/>
-    
 
 </LinearLayout>
