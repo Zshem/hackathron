@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.faelapp.CustomViewPager;
 import com.example.faelapp.DepthPageTransformer;
@@ -154,6 +155,7 @@ public class CouponsFragment extends Fragment {
 				.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 					@Override
 					public void onPageSelected(int position) {
+						
 					}
 
 					@Override
@@ -171,10 +173,32 @@ public class CouponsFragment extends Fragment {
 		Button minusButton = (Button) linearLayout
 				.findViewById(R.id.coupons_minus);
 		TextView numberToAdd = (TextView) linearLayout
-				.findViewById(R.id.coupons_numberToAdd);
-
-		numberToAdd.setText("0");
-		String plus = numberToAdd.getText().toString();
+				.findViewById(R.id.coupons_numberToAdd);		
+		Button addButton = (Button) linearLayout
+				.findViewById(R.id.coupons_add);
+		
+		addButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				LinearLayout linearLayout = (LinearLayout) v.getParent();
+				LinearLayout outerLinearLayout = (LinearLayout) linearLayout.getParent();
+				CustomViewPager viewPager = (CustomViewPager) outerLinearLayout.getChildAt(3);
+				Coupon coupon = couponsAvailable.get(viewPager.getCurrentItem());
+				for (int i = 0; i < couponsOwned.size(); i++) {
+					if(couponsOwned.get(i).getStore().equals(coupon.getStore()) && 
+							couponsOwned.get(i).getDiscount().equals(coupon.getDiscount()))
+					{
+						TextView textView= (TextView) linearLayout.getChildAt(1);
+						String newCount = textView.getText().toString();
+						int count = Integer.parseInt(newCount);
+						couponsOwned.get(i).setCount(count);
+						textView.setText("1");
+						Toast.makeText(v.getContext(), "added", Toast.LENGTH_LONG).show();
+					}
+				}
+			}
+		});
 		plusButton.setOnClickListener(new ButtonOnClickListener(R.id.coupons_plus));
 		minusButton.setOnClickListener(new ButtonOnClickListener(R.id.coupons_minus));
 
