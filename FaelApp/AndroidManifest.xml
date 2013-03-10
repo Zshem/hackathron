@@ -24,22 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.faelapp.NewCardActivity"
-            android:label="@string/title_activity_new_card"
-            android:parentActivityName="MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
-        </activity>
-        <activity
-            android:name="com.example.faelapp.CardDetailsActivity"
-            android:label="@string/title_activity_card_details"
-            android:parentActivityName="MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
-        </activity>
     </application>
 
 </manifest>
