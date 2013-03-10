@@ -1,7 +1,9 @@
 package com.example.faelapp.fragments;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -26,24 +28,27 @@ public class CreditCardFragment extends ListFragment {
 
 	private static int NEW_CARD_REQUEST = 1;
 	private List<CreditCard> creditCards;
-	private ArrayList<Bitmap> images;
+	public static Map<CreditCard.CardType, Bitmap> images;
 	private CreditCardsAdapter listAdapter;
 
 	@Override
 	  public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		images = new ArrayList<Bitmap>();
-		images.add(BitmapFactory.decodeResource(getResources(), R.drawable.card_plus));
+		images = new HashMap<CreditCard.CardType, Bitmap>();
+		images.put(CreditCard.CardType.UNIDENTIFIED_CARD, BitmapFactory.decodeResource(getResources(), R.drawable.card_plus));
+		images.put(CreditCard.CardType.DINERS, BitmapFactory.decodeResource(getResources(), R.drawable.card_diners));
+		images.put(CreditCard.CardType.VISA, BitmapFactory.decodeResource(getResources(), R.drawable.card_visa));
+		images.put(CreditCard.CardType.MAESTRO, BitmapFactory.decodeResource(getResources(), R.drawable.card_maestro));
 
 		creditCards = new ArrayList<CreditCard>();
-		creditCards.add(new CreditCard(3698, CreditCard.CardType.MASTER, "Fili Udzak", 150, 569));
-		creditCards.add(new CreditCard(7918, CreditCard.CardType.DINERS, "Lolo M.", -2, 824));
-		creditCards.add(new CreditCard(1697, CreditCard.CardType.VISA, "Maras Pi", 789542, 350));
+		creditCards.add(new CreditCard("3698", CreditCard.CardType.MAESTRO, "Fili Udzak", 150, 569));
+		creditCards.add(new CreditCard("7918", CreditCard.CardType.DINERS, "Lolo M.", -2, 824));
+		creditCards.add(new CreditCard("1697", CreditCard.CardType.VISA, "Maras Pi", 789542, 350));
 
 		setHasOptionsMenu(true);
 
-		listAdapter = new CreditCardsAdapter(getActivity(), creditCards);
+		listAdapter = new CreditCardsAdapter(getActivity(), creditCards, images);
 
 		//Set the adapter on the ListView holder
 		setListAdapter(listAdapter);
@@ -61,14 +66,6 @@ public class CreditCardFragment extends ListFragment {
 		inflater.inflate(R.layout.layout_cards_list, null);
 
 		return super.onCreateView(inflater, container, savedInstanceState);
-	}
-
-	public void showCardDetails(View view) {
-
-	}
-
-	public void addNewCard(View view) {
-
 	}
 
 	@Override
@@ -92,11 +89,12 @@ public class CreditCardFragment extends ListFragment {
 	            // The Intent's data Uri identifies which contact was selected.
 
 	        	Bundle bundle = data.getExtras();
-	        	int cardAccount = bundle.getInt("Account");
+	        	String cardAccount = bundle.getString("Account");
 	        	String cardHolder = bundle.getString("Holder");
 	        	int cardCRC = bundle.getInt("CRC");
+	        	CreditCard.CardType type = CreditCard.CardType.values()[bundle.getInt("Type")];
 
-	        	CreditCard newCard = new CreditCard(cardAccount, CreditCard.CardType.MASTER, cardHolder, 0, cardCRC);
+	        	CreditCard newCard = new CreditCard(cardAccount, type, cardHolder, 0, cardCRC);
 	        	creditCards.add(newCard);
 	        	listAdapter.notifyDataSetChanged();
 	        }

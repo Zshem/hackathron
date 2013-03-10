@@ -6,15 +6,35 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
+
+import com.example.faelapp.model.CreditCard;
 
 public class NewCardActivity extends Activity {
 
+	String mSpinnerItems[];
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_card);
 		// Show the Up button in the action bar.
 		setupActionBar();
+
+
+		mSpinnerItems = new String[CreditCard.CardType.NUMBER_OF_CARD_TYPES.ordinal()];
+		mSpinnerItems[CreditCard.CardType.DINERS.ordinal()] = "Diners";
+		mSpinnerItems[CreditCard.CardType.VISA.ordinal()] = "Visa";
+		mSpinnerItems[CreditCard.CardType.MAESTRO.ordinal()] = "Maestro";
+
+ 		Spinner spinner = (Spinner) findViewById(R.id.spinner_new_card_type);
+
+ 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, mSpinnerItems);
+
+ 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+ 		spinner.setAdapter(adapter);
 	}
 
 	/**
@@ -28,9 +48,19 @@ public class NewCardActivity extends Activity {
 
 	public void addNewCard(View view) {
 		Bundle bundle = new Bundle();
-		bundle.putString("Holder", "Marko Pipal");
-		bundle.putInt("Account", 1234567890);
-		bundle.putInt("CRC", 543);
+		EditText editAccount = (EditText) findViewById(R.id.edit_new_card_account);
+		EditText editHolder = (EditText) findViewById(R.id.edit_new_card_holder);
+		EditText editCRC = (EditText) findViewById(R.id.edit_new_card_CRC);
+		Spinner spinnerType = (Spinner) findViewById(R.id.spinner_new_card_type);
+
+		if(editAccount.getText().toString().isEmpty() && editHolder.getText().toString().isEmpty() && editCRC.getText().toString().isEmpty()) {
+			return;
+		}
+
+		bundle.putString("Holder", editHolder.getText().toString());
+		bundle.putString("Account", editAccount.getText().toString());
+		bundle.putInt("CRC", Integer.parseInt(editCRC.getText().toString()));
+		bundle.putInt("Type", spinnerType.getSelectedItemPosition());
 		Intent resultIntent = new Intent(this, MainActivity.class);
 		resultIntent.addFlags(
                 Intent.FLAG_ACTIVITY_CLEAR_TOP |

@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:src="@drawable/card_plus" 
-        android:onClick="showCardDetails"/>
+        android:onClick="com.example.faelapp.CreditCardFragment.showCardDetails" />
 
     <TextView
         android:id="@+id/card_number"

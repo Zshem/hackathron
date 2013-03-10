@@ -13,6 +13,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
+        android:maxLength="10"
         android:hint="@string/new_card_account" />
     
     <EditText 
@@ -28,14 +29,22 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
+        android:maxLength="3"
         android:layout_below="@id/edit_new_card_holder"
         android:hint="@string/new_card_CRC" />
+    
+    <Spinner 
+        android:id="@+id/spinner_new_card_type"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_new_card_CRC"
+        />
     
     <Button 
         android:id="@+id/btn_new_card_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edit_new_card_CRC"
+        android:layout_below="@id/spinner_new_card_type"
         android:layout_centerHorizontal="true"
         android:text="@string/new_card_submit"
         android:onClick="addNewCard" />

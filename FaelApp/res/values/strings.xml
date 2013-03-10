@@ -9,5 +9,6 @@
     <string name="new_card_holder">card holder</string>
     <string name="new_card_CRC">Card CRC number</string>
     <string name="new_card_submit">Add new card</string>
+    <string name="title_activity_card_details">CardDetailsActivity</string>
 
 </resources>
