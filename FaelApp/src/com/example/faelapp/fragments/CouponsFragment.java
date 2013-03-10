@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -173,7 +172,7 @@ public class CouponsFragment extends Fragment {
 				.findViewById(R.id.coupons_minus);
 		TextView numberToAdd = (TextView) linearLayout
 				.findViewById(R.id.coupons_numberToAdd);
-		
+
 		numberToAdd.setText("0");
 		String plus = numberToAdd.getText().toString();
 		plusButton.setOnClickListener(new ButtonOnClickListener(R.id.coupons_plus));
@@ -184,15 +183,15 @@ public class CouponsFragment extends Fragment {
 
 	public class ButtonOnClickListener implements OnClickListener {
 
-		private int mId;
-		
+		private final int mId;
+
 		private ButtonOnClickListener(int id) {
 			mId = id;
 		}
 
 		@Override
 		public void onClick(View v) {
-			
+
 			LinearLayout linearLayout = (LinearLayout) v.getParent();
 			TextView textView = (TextView) linearLayout.getChildAt(1);
 			String value = textView.getText().toString();
@@ -203,12 +202,12 @@ public class CouponsFragment extends Fragment {
 			case R.id.coupons_minus:
 				if(!value.equals("0"))
 					textView.setText(String.valueOf(Integer.parseInt(value)-1));
-				break;	
+				break;
 
 			default:
 				break;
 			}
-			
+
 
 		}
 	}
