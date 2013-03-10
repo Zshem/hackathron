@@ -47,16 +47,10 @@ public class CardDetailsActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-<<<<<<< HEAD
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.card_details, menu);
-=======
 		menu.add("Delete card").setIcon(R.drawable.card_delete).setShowAsAction(
 				MenuItem.SHOW_AS_ACTION_ALWAYS);
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.card_details, menu);
-
->>>>>>> Finished functionality for credit cards.
 		return true;
 	}
 
@@ -74,8 +68,4 @@ public class CardDetailsActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-<<<<<<< HEAD
-
-=======
->>>>>>> Finished functionality for credit cards.
 }
