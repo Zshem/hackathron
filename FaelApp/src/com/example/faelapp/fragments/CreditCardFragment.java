@@ -10,8 +10,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.ListFragment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +27,7 @@ import com.example.faelapp.model.CreditCard;
 
 
 public class CreditCardFragment extends ListFragment {
+
 
 	private static int NEW_CARD_REQUEST = 1;
 	private List<CreditCard> creditCards;
@@ -110,7 +113,6 @@ public class CreditCardFragment extends ListFragment {
 		menu.add("Refresh").setIcon(R.drawable.ic_launcher).setShowAsAction(
 				MenuItem.SHOW_AS_ACTION_IF_ROOM
 						| MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-
 		super.onPrepareOptionsMenu(menu);
 	}
 }

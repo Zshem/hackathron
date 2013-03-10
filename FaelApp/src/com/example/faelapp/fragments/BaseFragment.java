@@ -22,7 +22,7 @@ public class BaseFragment extends Fragment {
 
 		inflater.inflate(R.layout.activity_main, null);
 
-		return super.onCreateView(inflater, container, savedInstanceState);
+		return inflater.inflate(R.layout.activity_main, null);
 	}
 
 
