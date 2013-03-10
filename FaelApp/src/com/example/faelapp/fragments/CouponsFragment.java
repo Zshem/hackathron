@@ -2,14 +2,6 @@ package com.example.faelapp.fragments;
 
 import java.util.ArrayList;
 
-import com.example.faelapp.CustomViewPager;
-import com.example.faelapp.DepthPageTransformer;
-import com.example.faelapp.R;
-import com.example.faelapp.adapters.CouponsPagerAdapter;
-import com.example.faelapp.model.Coupon;
-import com.viewpagerindicator.CirclePageIndicator;
-import com.viewpagerindicator.PageIndicator;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -22,14 +14,21 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
+import com.example.faelapp.CustomViewPager;
+import com.example.faelapp.R;
+import com.example.faelapp.adapters.CouponsPagerAdapter;
+import com.example.faelapp.model.Coupon;
+import com.viewpagerindicator.CirclePageIndicator;
+import com.viewpagerindicator.PageIndicator;
+
 public class CouponsFragment extends Fragment {
-	
-	private String[] mSpinnerItems = {"All", "Billa", "Metro"};
-	
-	private ArrayList<Coupon> couponsAvailableAll = new ArrayList<Coupon>();
-	private ArrayList<Coupon> couponsAvailable = new ArrayList<Coupon>();
-	private ArrayList<Coupon> couponsOwned = new ArrayList<Coupon>();
-    
+
+	private final String[] mSpinnerItems = {"All", "Billa", "Metro"};
+
+	private final ArrayList<Coupon> couponsAvailableAll = new ArrayList<Coupon>();
+	private final ArrayList<Coupon> couponsAvailable = new ArrayList<Coupon>();
+	private final ArrayList<Coupon> couponsOwned = new ArrayList<Coupon>();
+
 	CouponsPagerAdapter mAdapterAvailable;
 	CouponsPagerAdapter mAdapterOwned;
     CustomViewPager mPagerAvailable;
@@ -40,19 +39,19 @@ public class CouponsFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		
+
 		Coupon coupon = new Coupon("Billa", "10%", 1, R.drawable.logo_billa, Coupon.CouponType.AVAILABLE);
 		couponsAvailableAll.add(coupon);
 		coupon = new Coupon("Metro", "10%", 1, R.drawable.logo_metro, Coupon.CouponType.AVAILABLE);
 		couponsAvailableAll.add(coupon);
-		
+
 		coupon = new Coupon("Billa", "10%", 1, R.drawable.logo_billa, Coupon.CouponType.OWNED);
 		couponsOwned.add(coupon);
 		coupon = new Coupon("Metro", "10%", 1, R.drawable.logo_metro, Coupon.CouponType.OWNED);
 		couponsOwned.add(coupon);
-		
+
 		LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.coupon_layout, null);
-		
+
 		//Available cards viewpager
 		mAdapterAvailable = new CouponsPagerAdapter(getActivity()
                 .getSupportFragmentManager(),
@@ -81,7 +80,7 @@ public class CouponsFragment extends Fragment {
                     public void onPageScrollStateChanged(int state) {
                     }
                 });
-		
+
 		Spinner spinner = (Spinner) linearLayout.findViewById(R.id.couponsSpinner);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, mSpinnerItems);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -92,41 +91,41 @@ public class CouponsFragment extends Fragment {
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				couponsAvailable.clear();
-				if(mSpinnerItems[position].equals("All")) 
+				if(mSpinnerItems[position].equals("All"))
 				{
 					for (int i = 0; i < couponsAvailableAll.size(); i++) {
-						
+
 							couponsAvailable.add(couponsAvailableAll.get(i));
 					}
-					
-					
+
+
 				}
 				else
 				{
-				
-				
+
+
 					for (int i = 0; i < couponsAvailableAll.size(); i++) {
 						if(mSpinnerItems[position].equals(couponsAvailableAll.get(i).getStore()))
 						{
 							couponsAvailable.add(couponsAvailableAll.get(i));
 						}
 					}
-					
+
 				}
-				
+
 				mAdapterAvailable.notifyDataSetChanged();
-				
+
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
-		
-        
+
+
+
         //Owned cards viewpager
         mAdapterOwned = new CouponsPagerAdapter(getActivity()
                 .getSupportFragmentManager(),
@@ -155,7 +154,7 @@ public class CouponsFragment extends Fragment {
                     public void onPageScrollStateChanged(int state) {
                     }
                 });
-        
+
         return linearLayout;
     }
 }
