@@ -7,20 +7,24 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.widget.TabHost;
 
+import com.example.faelapp.adapters.SwipeCollectionPagerAdapter;
 import com.example.faelapp.adapters.TabsAdapter;
 import com.example.faelapp.fragments.BaseFragment;
 import com.example.faelapp.fragments.CouponsFragment;
 import com.example.faelapp.fragments.CreditCardFragment;
+import com.example.faelapp.fragments.PayFragment;
 
 public class MainActivity extends FragmentActivity {
 
 	TabHost mTabHost;
 	ViewPager mViewPager;
 	TabsAdapter mTabsAdapter;
+	SwipeCollectionPagerAdapter mSwipeCollectionPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+/*
         setContentView(R.layout.fragment_tabs_pager);
 
 		mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -36,6 +40,31 @@ public class MainActivity extends FragmentActivity {
 				CouponsFragment.class, null);
 		mTabsAdapter.addTab(bar.newTab().setText("Transactions"),
 				BaseFragment.class, null);
+*/
+        setContentView(R.layout.fragment_swipe_item);
+
+        
+        mSwipeCollectionPagerAdapter =
+                new SwipeCollectionPagerAdapter(
+                        getSupportFragmentManager());
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager.setAdapter(mSwipeCollectionPagerAdapter);
+        
+//		mViewPager = (ViewPager) findViewById(R.id.pager);
+//
+//		ActionBar bar = getActionBar();
+//		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+//
+//		mTabsAdapter = new TabsAdapter(this, mViewPager);
+//
+//		mTabsAdapter.addTab(bar.newTab().setText("Pay"),
+//				PayFragment.class, null);
+//		mTabsAdapter.addTab(bar.newTab().setText("Cards"),
+//				CreditCardFragment.class, null);
+//		mTabsAdapter.addTab(bar.newTab().setText("Coupons"),
+//				BaseFragment.class, null);
+//		mTabsAdapter.addTab(bar.newTab().setText("Transactions"),
+//				BaseFragment.class, null);
     }
 
 
